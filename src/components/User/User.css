@@ -1,0 +1,15 @@
+.userCard {
+  width: 300px;
+  height: 400px;
+  padding: 20px;
+  box-shadow: 0 0 5px 1px gray;
+  border-radius: 20px;
+  transition: 0.3s ease-in;
+  &:hover {
+    box-shadow: 0 0 15px 1px gray;
+    transform: translateY(-2px);
+  }
+}
+.loading {
+  background-color: red;
+}
