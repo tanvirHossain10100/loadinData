@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import "./Login.css";
 export const Login = () => {
   const navigate = useNavigate();
   const handleClick = () => {
@@ -10,15 +10,16 @@ export const Login = () => {
   };
   return (
     <>
-      <div className="loginForm">Login</div>
-      <div>
-        <form action="submitLogin">
-          <input type="text" placeholder="type your name" />
-          <input type="text" placeholder="Type your email" />
-          <input type="text" placeholder="Type your paswword" />
+      <div className="loginForm">
+        <div className="logininputInfo">
+          <h2> Login</h2>
+          <form action="submitLogin" className="submitLogin">
+            <input type="text" placeholder="Type your email" />
+            <input type="text" placeholder="Type your paswword" />
 
-          <button type="submit"></button>
-        </form>
+            <button type="submit">submit</button>
+          </form>
+        </div>
       </div>
       <button onClick={handleClick}>Go back</button>
       <button onClick={handleGohome}>Home</button>

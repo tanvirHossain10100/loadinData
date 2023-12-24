@@ -8,6 +8,7 @@ import { auth } from "../../firebase/firebase.config";
 // import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import "./Registration.css";
 
 export const Registration = () => {
   const [updateProfile, updating, error1] = useUpdateProfile(auth);
@@ -73,37 +74,47 @@ export const Registration = () => {
 
   return (
     <>
-      <div className="loginForm">Login</div>
-      <div>
-        <form onSubmit={handleSignUp}>
-          <input
-            type="text"
-            placeholder="type your name"
-            name="name"
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
-            }
-          />
-          <input
-            type="text"
-            placeholder="Type your email"
-            name="email"
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
-            }
-          />
-          <input
-            type="text"
-            placeholder="Type your paswword"
-            name="password"
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
-            }
-          />
+      <div className="singUpContainer">
+        <div className="signupBtn">
+          <h2>Sign up</h2>
+          <form onSubmit={handleSignUp}>
+            <input
+              type="text"
+              placeholder="type your name"
+              name="name"
+              onChange={(e) =>
+                setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              placeholder="Type your email"
+              name="email"
+              onChange={(e) =>
+                setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              placeholder="Type your paswword"
+              name="password"
+              onChange={(e) =>
+                setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              placeholder="retyype your paswword"
+              name="password"
+              onChange={(e) =>
+                setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
+              }
+            />
 
-          <button type="submit"></button>
-        </form>
-        {/* <ToastContainer></ToastContainer> */}
+            <button type="submit">Register</button>
+          </form>
+          {/* <ToastContainer></ToastContainer> */}
+        </div>
       </div>
       {/* <button onClick={handleClick}>Go back</button> */}
       {/* <button onClick={handleGohome}>Home</button> */}
