@@ -115,7 +115,7 @@ export const Registration = () => {
               }
             />
             <input
-              type="text"
+              type="password"
               placeholder="Type your paswword"
               name="password"
               onChange={(e) =>
@@ -123,7 +123,7 @@ export const Registration = () => {
               }
             />
             <input
-              type="text"
+              type="password"
               placeholder="retyype your paswword"
               name="rePassword"
               onChange={(e) =>
