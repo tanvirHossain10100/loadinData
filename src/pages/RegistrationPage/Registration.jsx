@@ -17,9 +17,10 @@ export const Registration = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [userInfo, setUserInfo] = useState({
-    name: "name",
-    email: "email",
-    password: "password",
+    name: "",
+    email: "",
+    password: "",
+    rePassword: "",
   });
   console.log(userInfo);
   useEffect(() => {
@@ -28,9 +29,23 @@ export const Registration = () => {
   // use a=await user
   console.log(error1);
   const handleSignUp = async (e) => {
+    e.preventDefault();
     const name = userInfo.name;
-    console.log(name);
-    const hey1 = "hey";
+    const pass = userInfo.password;
+    const rePass = userInfo.rePassword;
+    if (pass !== rePass) {
+      toast.error("Password doesn't mathc !", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        progress: false,
+        theme: "dark",
+      });
+      return;
+    }
     console.log(userInfo.email);
     e.preventDefault();
     await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
@@ -105,7 +120,7 @@ export const Registration = () => {
             <input
               type="text"
               placeholder="retyype your paswword"
-              name="password"
+              name="rePassword"
               onChange={(e) =>
                 setUserInfo({ ...userInfo, [e.target.name]: e.target.value })
               }
