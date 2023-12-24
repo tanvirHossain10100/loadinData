@@ -35,11 +35,10 @@ export const routes = createBrowserRouter([
       {
         path: "users/:userId",
         element: <UserDetails></UserDetails>,
-        loader: ({ params }) => {
-          return fetch(
-            `https://jsonplaceholder.typicode.com/users/${params.userId}`
-          );
-        },
+        loader: ({ params }) =>
+          fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
+        errorElement: <NotFound />,
+
         //
         // console.log(userId)
         // console.log(params.userId);
@@ -51,7 +50,7 @@ export const routes = createBrowserRouter([
     element: <Login></Login>,
   },
   {
-    path: "registration",
+    path: "register",
     element: <Registration></Registration>,
   },
   {

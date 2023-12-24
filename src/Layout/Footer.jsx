@@ -1,7 +1,12 @@
+import "./Footer.css";
 export const Footer = () => {
   return (
     <>
-      <h2>This is for footer</h2>
+      <footer>
+        <p>
+          <span>All rights reserdved &copy; {new Date().getFullYear()}</span>
+        </p>
+      </footer>
     </>
   );
 };
