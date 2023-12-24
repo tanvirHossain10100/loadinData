@@ -22,6 +22,8 @@
 .singUpContainer button {
   display: block;
   width: 200px;
+  margin-bottom: 5px;
+  margin-top: -10px;
   margin: 0 auto;
   height: 30px;
   border-radius: 20px;

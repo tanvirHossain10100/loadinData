@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  useAuthState,
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
@@ -11,6 +12,7 @@ import { toast } from "react-toastify";
 import "./Registration.css";
 
 export const Registration = () => {
+  const [userSucces, loadingSucces, errorSuccs] = useAuthState(auth);
   const [updateProfile, updating, error1] = useUpdateProfile(auth);
 
   const navigate = useNavigate();
@@ -25,7 +27,12 @@ export const Registration = () => {
   console.log(userInfo);
   useEffect(() => {
     console.log(user);
-  }, [user]);
+    if (userSucces) {
+      toast("Succesfully registered !");
+      console.log(user);
+      navigate("/");
+    }
+  }, [userSucces]);
   // use a=await user
   console.log(error1);
   const handleSignUp = async (e) => {
@@ -69,15 +76,13 @@ export const Registration = () => {
     if (updating) {
       return <p>Loding....</p>;
     }
+    console.log(userSucces);
 
     console.log(error);
     if (user) {
-      toast("Default Notification !");
-      console.log(user);
-
-      toast.success("Success Notification !", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      // toast("Succesfully registered !");
+      // console.log(user);
+      // navigate("/");
 
       return (
         <div>
@@ -127,13 +132,13 @@ export const Registration = () => {
             />
 
             <button type="submit">Register</button>
+            <Link to="/login">Already have a account?</Link>
           </form>
           {/* <ToastContainer></ToastContainer> */}
         </div>
       </div>
       {/* <button onClick={handleClick}>Go back</button> */}
       {/* <button onClick={handleGohome}>Home</button> */}
-      <Link to="/login">Already have a account?</Link>
     </>
   );
 };

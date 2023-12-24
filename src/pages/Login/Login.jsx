@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 export const Login = () => {
   const navigate = useNavigate();
@@ -18,11 +18,13 @@ export const Login = () => {
             <input type="text" placeholder="Type your paswword" />
 
             <button type="submit">submit</button>
+            <Link to="/register">Already have a account?</Link>
           </form>
         </div>
       </div>
-      <button onClick={handleClick}>Go back</button>
-      <button onClick={handleGohome}>Home</button>
+
+      {/* <button onClick={handleClick}>Go back</button>
+      <button onClick={handleGohome}>Home</button> */}
     </>
   );
 };
