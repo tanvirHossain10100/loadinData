@@ -10,6 +10,7 @@ import { auth } from "../../firebase/firebase.config";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import "./Registration.css";
+import { GoogleLogin } from "../../components/socailLogInBtn/GoogleLogin";
 
 export const Registration = () => {
   const [userSucces, loadingSucces, errorSuccs] = useAuthState(auth);
@@ -131,13 +132,17 @@ export const Registration = () => {
             />
 
             <button type="submit">Register</button>
+            <div className="socialLoginBtnContainer">
+              <h2>Socail login</h2>
+
+              <div className="socialLogin">
+                <GoogleLogin></GoogleLogin>
+              </div>
+            </div>
             <Link to="/login">Already have a account?</Link>
           </form>
-          {/* <ToastContainer></ToastContainer> */}
         </div>
       </div>
-      {/* <button onClick={handleClick}>Go back</button> */}
-      {/* <button onClick={handleGohome}>Home</button> */}
     </>
   );
 };

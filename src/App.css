@@ -4,8 +4,11 @@
 
 * {
   box-sizing: border-box;
+  list-style: none;
 }
-
+li {
+  cursor: pointer;
+}
 body {
   background-color: #f7f7f7;
   justify-content: center;
