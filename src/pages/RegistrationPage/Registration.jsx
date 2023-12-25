@@ -53,7 +53,6 @@ export const Registration = () => {
       });
       return;
     }
-    console.log(userInfo.email);
     e.preventDefault();
     await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
     await updateProfile({ displayName: name });
