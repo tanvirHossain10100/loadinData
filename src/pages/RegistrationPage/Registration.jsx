@@ -2,17 +2,19 @@ import { useEffect, useState } from "react";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
+  useSendEmailVerification,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase/firebase.config";
-// import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import "./Registration.css";
 import { GoogleLogin } from "../../components/socailLogInBtn/GoogleLogin";
 
 export const Registration = () => {
+  const [sendEmailVerification, sending, error2] =
+    useSendEmailVerification(auth);
   const [userSucces, loadingSucces, errorSuccs] = useAuthState(auth);
   const [updateProfile, updating, error1] = useUpdateProfile(auth);
 
@@ -28,8 +30,9 @@ export const Registration = () => {
   console.log(userInfo);
   useEffect(() => {
     console.log(user);
-    if (userSucces) {
+    if (userSucces.emailVerified === true) {
       toast("Succesfully registered !");
+      console.log(user);
       console.log(user);
       navigate("/");
     }
@@ -56,7 +59,14 @@ export const Registration = () => {
     }
     e.preventDefault();
     await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+
+    const sucessEmailVarification = await sendEmailVerification(true);
     await updateProfile({ displayName: name });
+    if (sucessEmailVarification) {
+      toast.info("Check your eamil and verify", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
     console.log(user);
     console.log(user);
     // const hey = );
